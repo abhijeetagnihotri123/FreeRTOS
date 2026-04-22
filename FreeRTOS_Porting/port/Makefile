@@ -2,17 +2,28 @@ PROJECT=main
 CPU ?= cortex-m3
 BOARD ?= stm32vldiscovery
 
+FREERTOS_PATH = ../FreeRTOS-Kernel
+
+INC = -I$(FREERTOS_PATH)/include \
+	  -I$(FREERTOS_PATH)/portable/GCC/ARM_CM3 \
+	  -I./ \
+
 SRC = boot.S
 
 C_FILES = start.c
 
-OBJ = boot.o start.o
+OBJ = boot.o \
+	  start.o \
+	  portFunctions.o \
+	  $(FREERTOS_PATH)/tasks.o \
+	  $(FREERTOS_PATH)/portable/GCC/ARM_CM3/port.o \
+	  $(FREERTOS_PATH)/portable/MemMang/heap_4.o
 
 %.o: %.S
 	arm-none-eabi-as -mthumb -mcpu=$(CPU) -g -c $^ -o $@
 
 %.o: %.c
-	arm-none-eabi-gcc -mthumb -mcpu=$(CPU) -g -c $^ -o $@
+	arm-none-eabi-gcc $(INC) -mthumb -mcpu=$(CPU) -g -c $^ -o $@
 
 buildFirmware: $(OBJ)
 	arm-none-eabi-ld -Tmap.ld $(OBJ) -o $(PROJECT).elf
