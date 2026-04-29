@@ -21,7 +21,36 @@ static void vTask2(void *pvParameters){
     }
 }
 
+/*
+Bootup code below
+It copies values from flash to RAM using symbols defined in the linker script, and then starts the FreeRTOS scheduler.
+*/
+
+extern uint32_t _stext;
+extern uint32_t _etext; /* Start of text section in flash */
+
+extern uint32_t _sdata; /*Address of start of initialized data in RAM */
+extern uint32_t _edata;
+extern uint32_t _sidata; /* Start of initialized data in flash */
+
+extern uint32_t _sbss;
+extern uint32_t _ebss;
+
 void start(){
+
+    uint32_t *src = &_sidata;
+    uint32_t *dst_start = &_sdata;
+    while(dst_start < &_edata){
+        *dst_start = *src;
+        dst_start++;
+        src++;
+    }
+
+    dst_start = &_sbss;
+    while(dst_start < &_ebss){
+        *dst_start = 0;
+        dst_start++;
+    }
 
     BaseType_t xReturned = xTaskCreate(
         vTask1,                      /* Function that implements the task. */
