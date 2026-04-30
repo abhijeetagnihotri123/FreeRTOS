@@ -70,7 +70,7 @@ void start(){
         NULL                         /* Used to pass out the created task's handle. */
     );
 
-
+    portENABLE_INTERRUPTS();
     xPortStartScheduler();
 
     return;
