@@ -21,7 +21,7 @@ SECTIONS
         *(.data*)
         . = ALIGN(4);
         _edata = .; /* Size to be determined via current location pointer */
-    } > FLASH AT > RAM
+    } > RAM AT > FLASH
 
     .bss : ALIGN(4) {
         _sbss = .;
