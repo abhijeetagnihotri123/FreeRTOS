@@ -57,7 +57,7 @@ void start(){
         "Task1",                     /* Text name for the task. */
         configMINIMAL_STACK_SIZE,    /* Stack size in words, not bytes. */
         NULL,                        /* Parameter passed into the task. */
-       tskIDLE_PRIORITY + 1,        /* Priority at which the task is created. */
+        1,        /* Priority at which the task is created. */
         NULL                         /* Used to pass out the created task's handle. */
     );
 
@@ -66,12 +66,12 @@ void start(){
         "Task2",                     /* Text name for the task. */
         configMINIMAL_STACK_SIZE,    /* Stack size in words, not bytes. */
         NULL,                        /* Parameter passed into the task. */
-        tskIDLE_PRIORITY + 1,        /* Priority at which the task is created. */
+        1,        /* Priority at which the task is created. */
         NULL                         /* Used to pass out the created task's handle. */
     );
 
 
-    vTaskStartScheduler();
+    xPortStartScheduler();
 
     return;
 }
