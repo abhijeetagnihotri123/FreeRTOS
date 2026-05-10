@@ -1,0 +1,333 @@
+    1  clear
+    2  mkdir FirstBooot
+    3  cd FirstBoot/
+    4  clear
+    5  code Boot.S map.ld Makefile
+    6  make buildFirmware
+    7  make dumpFirmware
+    8  make clean
+    9  clear
+   10  make buildFirmware
+   11  make dumpFirmware
+   12  clear
+   13  make qemu
+   14  make buildFirmware
+   15  make dumpFirmware
+   16  code main.elf.lst 
+   17  make qemu
+   18  code backup_Makefile.txt
+   19  make clean
+   20  make buildFirmware
+   21  make qemu
+   22  clear
+   23  make buildFirmware
+   24  make clean
+   25  clear
+   26  make buildFirmware
+   27  make dumpFirmware
+   28  make clean
+   29  clear
+   30  git add 
+   31  git add .
+   32  clear
+   33  git commit -m "Starter code added"
+   34  clear
+   35  git push
+   36  clear
+   37  code start.c
+   38  make buildFirmware
+   39  make clean
+   40  make buildFirmware
+   41  make clean
+   42  make buildFirmware
+   43  make clean
+   44  make
+   45  make buildFirmware
+   46  make clean
+   47  make buildFirmware
+   48  make clean
+   49  make buildFirmware
+   50  make dumpFimrware
+   51  make dumpFirmware
+   52  code main.elf.lst 
+   53  make clean
+   54  clear
+   55  make buildFirmware
+   56  nm -C main.elf 
+   57  make clean
+   58  make buildFirmware
+   59  make dumpFirmware
+   60  make qemy
+   61  make qemu
+   62  clear
+   63  cd FirstBoot/
+   64  make buildFirmware
+   65  make qemu
+   66  make clean
+   67  make buildFirmware
+   68  make qemu
+   69  cd JumpToC_Functions/
+   70  clear
+   71  ls
+   72  code start.c 
+   73  make buildFirmware
+   74  clear
+   75  make qemu
+   76  cd JumpToC_Functions/
+   77  make clean
+   78  clear
+   79  make buildFirmware
+   80  clear
+   81  make dumpFirmware
+   82  code main.elf.lst 
+   83  make qemu
+   84  make clean
+   85  cd JumpToC_Functions/
+   86  clear
+   87  make clean
+   88  make buildFirmware
+   89  clear
+   90  make qemi
+   91  make qemu
+   92  clear
+   93  make clean
+   94  cd JumpToC_Functions/
+   95  clear
+   96  make buildFirmware
+   97  clear
+   98  make qemu
+   99  cd JumpToC_Functions/
+  100  clear
+  101  make buildFirmware
+  102  make qemu
+  103  clear
+  104  exit
+  105  cd JumpToC_Functions/
+  106  clear
+  107  make qemu
+  108  clear
+  109  exit
+  110  cd JumpToC_Functions/
+  111  make gdb
+  112  make clean
+  113  make buildFirmware
+  114  clear
+  115  make gdb
+  116  exit
+  117  cd JumpToC_Functions/
+  118  clear
+  119  make buildFirmware
+  120  make clean
+  121  clear
+  122  make buildFirmware
+  123  make qemu
+  124  make clean
+  125  clear
+  126  exit
+  127  clear
+  128  mkdir FreeRTOS_Porting
+  129  cd FreeRTOS_Porting/
+  130  clear
+  131  git clone https://github.com/FreeRTOS/FreeRTOS-Kernel.git
+  132  git add .
+  133  git commit -m "More code added"
+  134  git push
+  135  clear
+  136  exit
+  137  cd FreeRTOS_Porting/
+  138  ;s
+  139  ls
+  140  pwd
+  141  cd FreeRTOS_Porting/
+  142  clear
+  143  cd port/
+  144  make clean
+  145  clear
+  146  make buildFirmware
+  147  clear
+  148  make qemu
+  149  cd FreeRTOS_Porting/
+  150  ls
+  151  clear
+  152  cd port/
+  153  make gdb
+  154  cd FreeRTOS_Porting/
+  155  cd port/
+  156  clear
+  157  make gdb
+  158  clear
+  159  ls
+  160  cd zephyrOS/
+  161  ls
+  162  clear
+  163  pwd
+  164  cd zephyr-sdk-1.0.1/
+  165  pwd
+  166  mkdir zephyrOS
+  167  cd zephyrOS/
+  168  clear
+  169  arch
+  170  wget https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.1/zephyr-sdk-1.0.1_linux-x86_64_gnu.tar.xz
+  171  tar -xvf zephyr-sdk-1.0.1_linux-x86_64_gnu.tar.xz 
+  172  ls
+  173  rm zephyr-sdk-1.0.1_linux-x86_64_gnu.tar.xz 
+  174  clear
+  175  ls
+  176  cd zephyr-sdk-1.0.1/
+  177  ls
+  178  ./setup.sh 
+  179  ls
+  180  mkdir zephyr_env
+  181  ls
+  182  cd zephyr_env/
+  183  ls
+  184  cd ../../
+  185  ls
+  186  cd zephyr-sdk-1.0.1/
+  187  rm -rf zephyr_env/
+  188  cd ../
+  189  ls
+  190  mkdir zephyr_env
+  191  cd zephyr_env/
+  192  ls
+  193  python3 -m venv .venv
+  194  source .venv/bin/activate
+  195  clear
+  196  pip3 install west pyelftools jsonschema
+  197  ls
+  198  git clone https://github.com/zephyrproject-rtos/zephyr.git
+  199  ls
+  200  tree zephyr/
+  201  clear
+  202  tree -L 2
+  203  export ZEPHYR_BASE=$(pwd)/zephyr
+  204  echo ${ZEPHYR_BASE}
+  205  realpath ../zephyr
+  206  export ZEPHYR_SDK_INSTALL_DIR=/workspaces/FreeRTOS/zephyrOS/zephyr-sdk-1.0.1
+  207  echo ${ZEPHYR_SDK_INSTALL_DIR}
+  208  export PATH="$ZEPHYR_SDK_INSTALL_DIR/bin:$PATH"
+  209  ls
+  210  cd zephyr/
+  211  ls
+  212  west init -l .
+  213  ls
+  214  west update
+  215  ls ../
+  216  clear
+  217  ls
+  218  cd ../
+  219  ls
+  220  cd ../
+  221  ls
+  222  cd zephyr_env/
+  223  ls
+  224  cd zephyr/
+  225  ls
+  226  clear
+  227  cat samples/hello_world/src/main.c 
+  228  clear
+  229  west build -b qemu_cortex_m3 samples/hello_world/src/main.c 
+  230  west build -b qemu_cortex_m3 samples/hello_world/src/main.c 
+  231  west build -b qemu_cortex_m3 samples/hello_world
+  232  python3 --version
+  233  sudo apt install python3.12
+  234  pip3 install uv
+  235  uv install python3.12
+  236  uv python install 3.12
+  237  west build -b qemu_cortex_m3 samples/hello_world
+  238  uv python update-shell
+  239  sudo apt install python3.12
+  240  sudo apt update
+  241  sudo dnf update
+  242  sudo add-apt-repository ppa:deadsnakes/ppa
+  243  cd zephyrOS/
+  244  ls
+  245  python3 --versino
+  246  python3 --version
+  247  pip3 install uv
+  248  uv install python 3.12
+  249  uv python install 3.12
+  250  python --version
+  251  python3 -version
+  252  python3 --version
+  253  sudo apt install python3.12
+  254  python3.12 --version
+  255  cd ../
+  256  ls
+  257  rm -rf zephyrOS/
+  258  ls
+  259  clear
+  260  sudo apt-get remove python3.10
+  261  which python
+  262  clear
+  263  whatis python3
+  264  man whatis
+  265  cd ~
+  266  ls
+  267  cd ../
+  268  clear
+  269  ls
+  270  cd pyjamabrah/
+  271  ls
+  272  sudo apt update
+  273  sudo apt install python3.12
+  274  sudo apt install python3
+  275  python3 --version
+  276  sudo apt-get remove python3
+  277  uv python install 3.12
+  278  which python3
+  279  python --version
+  280  python3 --version
+  281  ls /usr/bin/python3
+  282  sudo apt-get purge python3
+  283  python
+  284  python3
+  285  clear
+  286  sudo apt-get install python3.12
+  287  sudo apt-get install python3.11
+  288  clear
+  289  sudo apt-get install python3.13
+  290  python3.12 
+  291  ls
+  292  mkdir zephyr_os_dir
+  293  cd zephyr_os_dir/
+  294  cd ~
+  295  ls
+  296  clear
+  297  ls
+  298  cmake --version
+  299  exot
+  300  exit
+  301  cd zephyr_os_dir/
+  302  ls
+  303  git clone wget https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.1/zephyr-sdk-1.0.1_linux-x86_64_gnu.tar.xz
+  304  wget https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.1/zephyr-sdk-1.0.1_linux-x86_64_gnu.tar.xz
+  305  tar xvf zephyr-sdk-1.0.1_linux-x86_64_gnu.tar.xz 
+  306  clear
+  307  ls
+  308  rm zephyr-sdk-1.0.1_linux-x86_64_gnu.tar.xz 
+  309  clear
+  310  ls
+  311  cd zephyr-sdk-1.0.1/
+  312  ls
+  313  ./setup.sh 
+  314  clear
+  315  python3.12 -m venv .venv
+  316  .venv/bin/activate
+  317  python3.12 -m venv .venv
+  318  clear
+  319  rm .venv/
+  320  rm -rf .venv/
+  321  clear
+  322  ls
+  323  cd ../
+  324  ls
+  325  mkdir zephyr_env
+  326  cd zephyr_env/
+  327  clear
+  328  python3.12 -m venv .venv
+  329  .venv/bin/activate
+  330  sudo .venv/bin/activate
+  331  .venv/bin/activate
+  332  history
+  333  history >> commands.txt
